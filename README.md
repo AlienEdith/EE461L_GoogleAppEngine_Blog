@@ -13,12 +13,13 @@
 
 #### Login
 - [x] Normal Login
-- [ ] Login Auth when Create New Post
+- [x] Login Auth when Create New Post
       (**Now**: will redirect when click new post button , haven't test the actully request)
 
 #### Posting
 - [x] Create New Post
       (**Now**: seems working......need more test)
+- [ ] Cancel Button
 
 #### Access to Posts
 - [ ] Show all posts
