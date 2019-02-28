@@ -5,17 +5,17 @@
 #### Landing
 - [ ] Show only 5 posts 
   (**Now**: show ALL!)
-- [ ] Login Redirect
-- [ ] New Post Redirect
+- [x] Login Redirect
+- [x] New Post Redirect
 - [ ] Show All Post Button
 
 #### Login
-- [ ] Normal Login
+- [x] Normal Login
 - [ ] Login Auth when Create New Post
       (**Now**: will redirect when click new post button , haven't test the actully request)
 
 #### Posting
-- [ ] Create New Post
+- [x] Create New Post
       (**Now**: seems working......need more test)
 
 #### Access to Posts
