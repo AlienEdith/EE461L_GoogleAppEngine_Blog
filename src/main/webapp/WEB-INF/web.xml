@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
          
+	<!-- Create New Form -->
 
 
   	<!-- Display New Post Form -->
@@ -12,16 +13,17 @@
     	<jsp-file>/newPost.jsp</jsp-file>
 	</servlet> 
 	
-	<!-- Create New Form -->
+	<!-- GET all posts / POST New post -->
 	<servlet>
-     	<servlet-name>createNewPost</servlet-name>
-     	<servlet-class>blog.createNewPostServlet</servlet-class>
+     	<servlet-name>PostServlet</servlet-name>
+     	<servlet-class>blog.PostServlet</servlet-class>
   	</servlet>
   	
   	
   	
   	<!-- Mapping -->
   	
+
 	
   	<!-- Display New Post Form -->
  	<servlet-mapping>
@@ -29,9 +31,9 @@
   		<url-pattern>/posts/new</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Create New Form -->
+	<!-- GET all posts / POST New post -->
  	<servlet-mapping>
-  		<servlet-name>createNewPost</servlet-name>
+  		<servlet-name>PostServlet</servlet-name>
   		<url-pattern>/posts</url-pattern>
 	</servlet-mapping>
 

@@ -12,7 +12,13 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class createNewPostServlet extends HttpServlet{
+public class PostServlet extends HttpServlet{
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.sendRedirect("/postsList.jsp");
+//		req.setAttribute("posts", posts);
+	}
+	
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         
@@ -27,12 +33,12 @@ public class createNewPostServlet extends HttpServlet{
         String blogCollection = req.getParameter("blogCollection");
         String title = req.getParameter("title");
         String content = req.getParameter("content");
-        System.out.println(blogCollection);
+        System.out.println(title);
         BlogEntry be = new BlogEntry(title, content, user);
         // Save Object/Entity to datastore
         ofy().save().entity(be).now(); 
         
         resp.sendRedirect("/landing.jsp");
-        
+       
     }
 }

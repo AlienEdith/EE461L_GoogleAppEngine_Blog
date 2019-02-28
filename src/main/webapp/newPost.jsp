@@ -42,7 +42,7 @@
    		<input type="hidden" name="blogCollection" value="blogCollection"/>
    		<div><input type="submit" value="Post Blog" ></div>
  	</form>
-	
+	<a href="/">Cancel</a>
 	<%
 	 }
 	%>

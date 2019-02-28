@@ -9,6 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
+
 <html>
   <head>
   	<link type="text/css" rel="stylesheet" href="" />
@@ -17,35 +18,8 @@
   <body>
 
 
-	<h1>Landing Page</h1>
-	<div>
-		Image Header Goes Here
-	</div>
+	<h1>List All Posts</h1>
 
-	<%
-	
-	UserService userService = UserServiceFactory.getUserService();
-    User user = userService.getCurrentUser();
-
-    if (user != null) {
-      pageContext.setAttribute("user", user);
-	
-	%>
-		<p>
-		    <!-- Avoid HTTP injection -->
-			Welcome, ${fn:escapeXml(user.nickname)}!(<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)
-		</p>
-	<%
-	    } else {
-	%>
-	
-		<p>
-			Please <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a> to post!
-		</p>
-	
-	<%
-	 }
-	%>
 
 	<div>
 		Post Lists Goes Here
@@ -54,7 +28,6 @@
 	
 	ObjectifyService.register(BlogEntry.class);
 	List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
-//	Collections.sort(greetings); 
 	Collections.sort(blogEntries, Collections.reverseOrder()); 
 	
     if (blogEntries.isEmpty()) {
@@ -63,8 +36,7 @@
         <%
     } else {
     	
-        for (int i=0; i<5; i++) {
-        	BlogEntry blogentry = blogEntries.get(i);
+        for (BlogEntry blogentry : blogEntries) {
             pageContext.setAttribute("content", blogentry.getContent());
             pageContext.setAttribute("title", blogentry.getTitle());
             pageContext.setAttribute("user", blogentry.getUser());
@@ -81,12 +53,10 @@
 %>
 
 	<div>
-		<a href="/posts"> View All Posts</a>
+		<a href="/"> Go Back</a>
 	</div>
 	
-	<div>
-		<a href="/posts/new"> NEW BLOG</a>
-	</div>
+
 
 	   
 

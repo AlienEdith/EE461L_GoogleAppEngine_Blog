@@ -21,6 +21,7 @@ public class BlogEntry implements Comparable<BlogEntry>{
 	private BlogEntry() {}
 	
 	public BlogEntry(String title, String content, User user) {
+			this.title = title;
 	        this.user = user;
 	        this.content = content;
 	        String blogCollection = "blogCollection";
