@@ -1,0 +1,45 @@
+  	<!-- Delcares servlets -->
+  	<servlet>
+    	<servlet-name>landing</servlet-name>
+    	<jsp-file>/landing.jsp</jsp-file>
+	</servlet>
+
+   	<servlet>
+    	<servlet-name>login</servlet-name>
+    	<jsp-file>/login.jsp</jsp-file>
+	</servlet> 
+	
+	   	<servlet>
+    	<servlet-name>newPostForm</servlet-name>
+    	<jsp-file>/newPost.jsp</jsp-file>
+	</servlet> 
+	
+<!--  	 <servlet>
+     	<servlet-name>posts</servlet-name>
+     	 GET ALL POSTS FROM DATASTORE 
+     		 Class or JSP 
+     	<servlet-class></servlet-class>
+  	</servlet>
+-->
+<!--   	<servlet>
+     	<servlet-name>newPost</servlet-name>
+     	NEW POST CLASS add to datastore 
+     	<servlet-class></servlet-class>
+  	</servlet>
+--> 	
+  
+  	<!-- Maps the servlets to the URL paths -->
+  	
+  	<!-- List All Posts -->
+   	<servlet-mapping>
+  		<servlet-name>posts</servlet-name>
+  		<url-pattern>/posts</url-pattern>
+  	</servlet-mapping>
+  
+
+  
+  	<!-- Create New Post -->
+	<servlet-mapping>
+		<servlet-name>newPost</servlet-name>
+        <url-pattern>/posts</url-pattern>
+	</servlet-mapping> 
