@@ -26,9 +26,10 @@
 	</div>
 	<%
 	
-	ObjectifyService.register(BlogEntry.class);
-	List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
-	Collections.sort(blogEntries, Collections.reverseOrder()); 
+	//ObjectifyService.register(BlogEntry.class);
+	//List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
+	//Collections.sort(blogEntries, Collections.reverseOrder()); 
+	List<BlogEntry> blogEntries = (List<BlogEntry>) request.getAttribute("blogEntries");  
 	
     if (blogEntries.isEmpty()) {
         %>
