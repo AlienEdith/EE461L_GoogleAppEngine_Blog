@@ -5,8 +5,7 @@
 ### Function
 
 #### Landing
-- [ ] Show only 5 posts 
-  (**Now**: show ALL!)
+- [x] Show only 5 posts 
 - [x] Login Redirect
 - [x] New Post Redirect
 - [x] Show All Post Button
@@ -18,12 +17,12 @@
 
 #### Posting
 - [x] Create New Post
-      (**Now**: seems working......need more test)
 - [x] Cancel Button
 
 #### Access to Posts
 - [x] Show all posts
-      (**Issue**: login all in JSP, can it be done in .doGet()? how to passed data to redirect page? => **Is "render" available?**)
+     - [x] do Logic in .jsp file
+     - [x] do Login in servlet, pass data to .jsp file
 - [ ] "Previous/Next" (**Optional**)
 
 #### Cron
