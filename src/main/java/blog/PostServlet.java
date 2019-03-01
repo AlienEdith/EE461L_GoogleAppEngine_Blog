@@ -19,11 +19,12 @@ import com.googlecode.objectify.*;
 public class PostServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		
 		ObjectifyService.register(BlogEntry.class);
 		List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
 		Collections.sort(blogEntries, Collections.reverseOrder()); 
 		req.setAttribute("blogEntries", blogEntries);
-		req.getRequestDispatcher("/postsList.jsp").forward(req, resp);
+		req.getRequestDispatcher("/posts.jsp").forward(req, resp);
 //		resp.sendRedirect("/postsList.jsp");
 
 	}
@@ -38,16 +39,16 @@ public class PostServlet extends HttpServlet{
         	resp.sendRedirect("/landing.jsp");
         	return;
         }
-    	
+        
+        ObjectifyService.register(BlogEntry.class);
         String blogCollection = req.getParameter("blogCollection");
         String title = req.getParameter("title");
         String content = req.getParameter("content");
-        System.out.println(title);
         BlogEntry be = new BlogEntry(title, content, user);
         // Save Object/Entity to datastore
         ofy().save().entity(be).now(); 
         
-        resp.sendRedirect("/landing.jsp");
+        resp.sendRedirect("/");
        
     }
 }

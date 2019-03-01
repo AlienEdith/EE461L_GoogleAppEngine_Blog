@@ -4,8 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
          
-	<!-- Create New Form -->
-
+	<!-- Declare Servlet -->
 
   	<!-- Display New Post Form -->
   	<servlet>
@@ -19,9 +18,19 @@
      	<servlet-class>blog.PostServlet</servlet-class>
   	</servlet>
   	
+  	<!-- Activate Subscribe Cron -->
+  	<servlet>
+     	<servlet-name>ActivateSubscribeServlet</servlet-name>
+     	<servlet-class>blog.ActivateSubscribeServlet</servlet-class>
+  	</servlet> 
   	
+ 	<!-- Subscribe Cron -->
+  	<servlet>
+     	<servlet-name>SubscribeCronServlet</servlet-name>
+     	<servlet-class>blog.SubscribeCronServlet</servlet-class>
+  	</servlet> 
   	
-  	<!-- Mapping -->
+  	<!-- Mapping Servlet -->
   	
 
 	
@@ -36,7 +45,21 @@
   		<servlet-name>PostServlet</servlet-name>
   		<url-pattern>/posts</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- Activate Subscribe Cron -->
+ 	<servlet-mapping>
+  		<servlet-name>ActivateSubscribeServlet</servlet-name>
+  		<url-pattern>/subscribe</url-pattern>
+	</servlet-mapping> 
+	
+	<!-- Subscribe Cron -->
+	<servlet-mapping>
+  		<servlet-name>SubscribeCronServlet</servlet-name>
+  		<url-pattern>/subscribe/cron</url-pattern>
+	</servlet-mapping> 
+	
+	
+	
 	<welcome-file-list>
     	<welcome-file>landing.jsp</welcome-file>
   	</welcome-file-list>

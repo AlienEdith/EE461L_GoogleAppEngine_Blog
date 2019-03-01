@@ -62,8 +62,8 @@
         <p>No Blog yet.</p>
         <%
     } else {
-    	
-        for (int i=0; i<5; i++) {
+    	int size = blogEntries.size();
+        for (int i=0; i<Math.min(size,5); i++) {
         	BlogEntry blogentry = blogEntries.get(i);
             pageContext.setAttribute("content", blogentry.getContent());
             pageContext.setAttribute("title", blogentry.getTitle());
@@ -86,6 +86,11 @@
 	
 	<div>
 		<a href="/posts/new"> NEW BLOG</a>
+	</div>
+	
+	<div>
+		<a href="/subscribe"> Subscribe </a>
+		<a href="/posts/new"> Unsubscribe </a>
 	</div>
 
 	   
