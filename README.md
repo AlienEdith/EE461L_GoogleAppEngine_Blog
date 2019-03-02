@@ -9,8 +9,8 @@
 - [x] Login Redirect
 - [x] New Post Redirect
 - [x] Show All Post Button
-- [ ] Subscribe Button
-- [ ] Unsubscribe Button
+- [x] Subscribe Button
+- [x] Unsubscribe Button
 
 #### Login
 - [x] Normal Login
@@ -29,13 +29,13 @@
 - [ ] "Previous/Next" (**Optional**)
 
 #### Cron
- - [ ] Add User to Subscriber Collection
- - [ ] Delete User from Subscriber Collection
- - [ ] Add Cron
- - [ ] Send Email
- 
+ - [x] Add User to Subscriber Collection
+ - [x] Delete User from Subscriber Collection
+ - [x] Add Cron
+ - [x] Send Email
+ - [ ] Testing Email List(Need to change from 11:00 AM CST to 17:00 PM CST)
 #### Issue
 - Add "BlogCollection" ?
 - Show message when subscribe/unsubscribe
 - UTC shown on webpage, CST stored in datastore
-- GMT on Dashboard - Cron jobs
+- GMT on Dashboard - Cron jobs => manully convert
