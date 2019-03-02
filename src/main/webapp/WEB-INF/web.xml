@@ -30,9 +30,18 @@
      	<servlet-class>blog.SubscribeCronServlet</servlet-class>
   	</servlet> 
   	
-  	<!-- Mapping Servlet -->
-  	
+  	<!-- Unsubscribe  -->
+  	<servlet>
+     	<servlet-name>UnactivateSubscribeServlet</servlet-name>
+     	<servlet-class>blog.UnactivateSubscribeServlet</servlet-class>
+  	</servlet> 
 
+  	 <servlet>
+     	<servlet-name>SendEmailNowServlet</servlet-name>
+     	<servlet-class>blog.sendEmailNow</servlet-class>
+  	</servlet> 
+  	
+  	<!-- Mapping Servlet -->
 	
   	<!-- Display New Post Form -->
  	<servlet-mapping>
@@ -58,6 +67,17 @@
   		<url-pattern>/subscribe/cron</url-pattern>
 	</servlet-mapping> 
 	
+	<!-- Subscribe Cron -->
+	<servlet-mapping>
+  		<servlet-name>UnactivateSubscribeServlet</servlet-name>
+  		<url-pattern>/unsubscribe</url-pattern>
+	</servlet-mapping> 
+	
+		<!-- Subscribe Cron -->
+	<servlet-mapping>
+  		<servlet-name>SendEmailNowServlet</servlet-name>
+  		<url-pattern>/send</url-pattern>
+	</servlet-mapping> 
 	
 	
 	<welcome-file-list>

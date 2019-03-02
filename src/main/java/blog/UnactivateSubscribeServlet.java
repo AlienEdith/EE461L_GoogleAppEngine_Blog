@@ -3,6 +3,8 @@ package blog;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Result;
 
 
-public class ActivateSubscribeServlet extends HttpServlet{
-	// Add Current User to Subscriber Collection
+
+public class UnactivateSubscribeServlet extends HttpServlet{
+	
+	private static final Logger log = Logger.getLogger(UnactivateSubscribeServlet.class.getName());
+	
+	// Detele Current User From Subscriber Collections	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
         UserService userService = UserServiceFactory.getUserService();
@@ -26,13 +34,16 @@ public class ActivateSubscribeServlet extends HttpServlet{
         	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
         	return;
         }
-        
+
         ObjectifyService.register(Subscriber.class);
-        String email = user.getEmail();
-        String nickname = user.getNickname();
-        Subscriber ss = new Subscriber(user.getUserId(),email, nickname);
-        // Save Object/Entity to datastore
-        ofy().save().entity(ss).now();
+       
+        List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
+        for(Subscriber ss: subscribers) {
+        	if(ss.getUserId().equals(user.getUserId())) {
+        		ofy().delete().entity(ss).now();
+        	}	
+        }
+
         resp.sendRedirect("/landing.jsp");
 	}
 }

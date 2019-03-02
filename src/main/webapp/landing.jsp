@@ -90,12 +90,8 @@
 	
 	<div>
 		<a href="/subscribe"> Subscribe </a>
-		<a href="/posts/new"> Unsubscribe </a>
+		<a href="/unsubscribe"> Unsubscribe </a>
 	</div>
-
-	   
-
-
 
   </body>
 

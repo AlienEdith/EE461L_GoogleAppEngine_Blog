@@ -3,6 +3,7 @@
 		<cron>
 			<url>/subscribe/cron</url>
 			<description>User could subscribe the blog. Every day at 5pm Central Time, subsribed user will receive a digest of any new posts in the last 24 hours to all.</description>
-			<schedule>every day 17:00</schedule>
+			<schedule>every day 23:00</schedule>
+				<!-- GMT 23:00 = CST 17:00 -->
 		</cron>
 	</cronentries> 

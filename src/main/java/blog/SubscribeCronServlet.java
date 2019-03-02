@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -29,6 +30,7 @@ import com.googlecode.objectify.ObjectifyService;
 
 
 public class SubscribeCronServlet extends HttpServlet{
+	private static final Logger logger = Logger.getLogger(SubscribeCronServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
@@ -54,28 +56,46 @@ public class SubscribeCronServlet extends HttpServlet{
 			}
 		}
 		
+		int number = SelectedBlog.size();
+		if(number == 0) {
+			logger.info("No new Posts");
+			return;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for(BlogEntry be: SelectedBlog) {
+			sb.append(be.title+"\n");
+		}
+		
 		// Get subscribers		
 		ObjectifyService.register(Subscriber.class);
 		List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
 		
-		
-//		Properties props = new Properties();
-//		Session session = Session.getDefaultInstance(props, null);
-//
-//		try {
-//		  Message msg = new MimeMessage(session);
-//		  msg.setFrom(new InternetAddress("edith.w0807@gmail.com", "Yixing Wang"));
-//		  msg.addRecipient(Message.RecipientType.TO,
-//		                   new InternetAddress(user.getEmail(), user.getNickname()));
-//		  msg.setSubject("Your Example.com account has been activated");
-//		  msg.setText("This is a test");
-//		  Transport.send(msg);
-//		} catch (AddressException e) {
-//		  // ...
-//		} catch (MessagingException e) {
-//		  // ...
-//		} catch (UnsupportedEncodingException e) {
-//		  // ...
-//		}
+		for (Subscriber subscriber: subscribers) {
+			Properties props = new Properties();
+			Session session = Session.getDefaultInstance(props, null);
+
+			try{
+				logger.info("Cron Job has been executed");
+				Message msg = new MimeMessage(session);
+				msg.setFrom(new InternetAddress("yxwang@ee461lgaeblog-yxw.appspotmail.com", "Yixing Wang"));
+				msg.addRecipient(Message.RecipientType.TO,
+				                   new InternetAddress(subscriber.getEmail(), subscriber.getNickname()));
+				msg.setSubject("Web blog Daily Digest!");
+				msg.setText("Good Afternoon! \n Here are your daily digest from YXW-Web Blog! \n "
+							+ "Yesterday there were "+number+" new blogs! The titles are:\n"
+							+ sb.toString()
+							+ "Hope you enjoy!\n"
+							+ "https://ee461lgaeblog-yxw.appspot.com/");
+				Transport.send(msg);
+			} catch (AddressException e) {
+				logger.info(e.getMessage());
+			} catch (MessagingException e) {
+				logger.info(e.getMessage());
+			} catch (UnsupportedEncodingException e) {
+				logger.info(e.getMessage());
+			}	
+		}
+
 	}
 }

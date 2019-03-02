@@ -13,17 +13,22 @@ import com.googlecode.objectify.annotation.Parent;
 public class Subscriber {
 	@Parent Key<SubscriberCollection> subscriber;
 //	@Id Long id;
-	@Id String email;
+	@Id String userId;
+	@Index String email;
 	@Index String nickname;
 	
 	private Subscriber() {}
 	
-	public Subscriber(String email, String nickname) {
-			this.email = email;;
+	public Subscriber(String userId, String email, String nickname) {
+			this.userId = userId;
+			this.email = email;
 	        this.nickname = nickname;
 	        this.subscriber = Key.create(SubscriberCollection.class, "subscriber");
 	    }
 	
+		public String getUserId() {
+			return userId;
+		}
 	    public String getEmail() {
 	        return email;
 	    }
