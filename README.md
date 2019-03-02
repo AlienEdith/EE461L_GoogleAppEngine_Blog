@@ -9,6 +9,8 @@
 - [x] Login Redirect
 - [x] New Post Redirect
 - [x] Show All Post Button
+- [x] Subscribe Button
+- [x] Unsubscribe Button
 
 #### Login
 - [x] Normal Login
@@ -23,11 +25,17 @@
 - [x] Show all posts
      - [x] do Logic in .jsp file
      - [x] do Login in servlet, pass data to .jsp file
+- [ ] Detail Individual Post Page (**Optional**)
 - [ ] "Previous/Next" (**Optional**)
 
 #### Cron
-**Haven't start yet**
-
+ - [x] Add User to Subscriber Collection
+ - [x] Delete User from Subscriber Collection
+ - [x] Add Cron
+ - [x] Send Email
+ - [x] Testing Email List
 #### Issue
-- Is "BlogCollection" necessary????
-  Now it's pure hard-coded, **may** need to add the feature later, so user can have different blogCollection
+- Add "BlogCollection" ?
+- Show message when subscribe/unsubscribe
+- UTC shown on webpage, CST stored in datastore
+- GMT on Dashboard - Cron jobs => manully convert in cron.xml
