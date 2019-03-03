@@ -57,12 +57,5 @@
 		<a href="/"> Go Back</a>
 	</div>
 	
-
-
-	   
-
-
-
   </body>
-
 </html>

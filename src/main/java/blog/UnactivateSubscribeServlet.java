@@ -31,12 +31,11 @@ public class UnactivateSubscribeServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         if(user == null) {
-        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        	resp.sendRedirect(userService.createLoginURL("/"));
         	return;
         }
 
         ObjectifyService.register(Subscriber.class);
-       
         List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
         for(Subscriber ss: subscribers) {
         	if(ss.getUserId().equals(user.getUserId())) {
@@ -44,6 +43,7 @@ public class UnactivateSubscribeServlet extends HttpServlet{
         	}	
         }
 
-        resp.sendRedirect("/landing.jsp");
+        req.setAttribute("message", "You have successfully Unsubscribe!");
+		req.getRequestDispatcher("/subInfo.jsp").forward(req, resp);
 	}
 }

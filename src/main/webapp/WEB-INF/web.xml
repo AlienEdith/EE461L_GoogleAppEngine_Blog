@@ -36,10 +36,6 @@
      	<servlet-class>blog.UnactivateSubscribeServlet</servlet-class>
   	</servlet> 
 
-  	 <servlet>
-     	<servlet-name>SendEmailNowServlet</servlet-name>
-     	<servlet-class>blog.sendEmailNow</servlet-class>
-  	</servlet> 
   	
   	<!-- Mapping Servlet -->
 	
@@ -67,18 +63,11 @@
   		<url-pattern>/subscribe/cron</url-pattern>
 	</servlet-mapping> 
 	
-	<!-- Subscribe Cron -->
+	<!-- Unsubscribe Cron -->
 	<servlet-mapping>
   		<servlet-name>UnactivateSubscribeServlet</servlet-name>
   		<url-pattern>/unsubscribe</url-pattern>
 	</servlet-mapping> 
-	
-		<!-- Subscribe Cron -->
-	<servlet-mapping>
-  		<servlet-name>SendEmailNowServlet</servlet-name>
-  		<url-pattern>/send</url-pattern>
-	</servlet-mapping> 
-	
 	
 	<welcome-file-list>
     	<welcome-file>landing.jsp</welcome-file>

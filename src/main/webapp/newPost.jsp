@@ -28,7 +28,7 @@
 	
 	%>
 		<p>
-			Please <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a> to post!
+			Please <a href="<%= userService.createLoginURL("/") %>">Sign in</a> to post!
 		</p>
 	<%
 	    } else {

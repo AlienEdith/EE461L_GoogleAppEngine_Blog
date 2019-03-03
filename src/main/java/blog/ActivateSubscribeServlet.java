@@ -23,7 +23,7 @@ public class ActivateSubscribeServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         if(user == null) {
-        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        	resp.sendRedirect(userService.createLoginURL("/"));
         	return;
         }
         
@@ -33,6 +33,8 @@ public class ActivateSubscribeServlet extends HttpServlet{
         Subscriber ss = new Subscriber(user.getUserId(),email, nickname);
         // Save Object/Entity to datastore
         ofy().save().entity(ss).now();
-        resp.sendRedirect("/landing.jsp");
+        
+        req.setAttribute("message", "You have successfully Subscribe!");
+		req.getRequestDispatcher("/subInfo.jsp").forward(req, resp);
 	}
 }
