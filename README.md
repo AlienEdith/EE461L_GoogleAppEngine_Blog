@@ -15,7 +15,6 @@
 #### Login
 - [x] Normal Login
 - [x] Login Auth when Create New Post
-      (**Now**: will redirect when click new post button , haven't test the actully request)
 
 #### Posting
 - [x] Create New Post
@@ -36,6 +35,6 @@
  - [x] Testing Email List
 #### Issue
 - Add "BlogCollection" ?
-- Show message when subscribe/unsubscribe
+- ~~Show message when subscribe/unsubscribe
 - UTC shown on webpage, CST stored in datastore
 - GMT on Dashboard - Cron jobs => manully convert in cron.xml
