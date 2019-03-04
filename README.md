@@ -34,7 +34,6 @@
  - [x] Send Email
  - [x] Testing Email List
 #### Issue
-- Add "BlogCollection" ?
-- ~~Show message when subscribe/unsubscribe
+- ~~Show message when subscribe/unsubscribe~~
 - UTC shown on webpage, CST stored in datastore
 - GMT on Dashboard - Cron jobs => manully convert in cron.xml
