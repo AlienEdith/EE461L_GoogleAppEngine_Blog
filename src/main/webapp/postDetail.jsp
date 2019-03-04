@@ -21,7 +21,6 @@
 		boolean found = false;
 		if(request.getRequestURI().split("/").length > 2){
 			String currentId = request.getRequestURI().split("/")[2];
-			System.out.println(currentId);
 			ObjectifyService.register(BlogEntry.class);
 			List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
 			for(BlogEntry be: blogEntries) {
