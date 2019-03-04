@@ -36,6 +36,10 @@
      	<servlet-class>blog.UnactivateSubscribeServlet</servlet-class>
   	</servlet> 
 
+  	<servlet>
+     	<servlet-name>postDetail</servlet-name>
+     	<jsp-file>/postDetail.jsp</jsp-file>
+  	</servlet> 
   	
   	<!-- Mapping Servlet -->
 	
@@ -67,6 +71,11 @@
 	<servlet-mapping>
   		<servlet-name>UnactivateSubscribeServlet</servlet-name>
   		<url-pattern>/unsubscribe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+  		<servlet-name>postDetail</servlet-name>
+  		<url-pattern>/posts/*</url-pattern>
 	</servlet-mapping> 
 	
 	<welcome-file-list>

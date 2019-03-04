@@ -29,6 +29,9 @@ public class BlogEntry implements Comparable<BlogEntry>{
 	        this.blogcollection = Key.create(BlogCollection.class, blogCollection);
 	        date = new Date();
 	    }
+	    public Long getId() {
+	        return id;
+	    }
 	    public String getTitle() {
 	        return title;
 	    }

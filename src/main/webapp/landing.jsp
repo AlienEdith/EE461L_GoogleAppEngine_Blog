@@ -93,7 +93,8 @@
     	int size = blogEntries.size();
         for (int i=0; i<Math.min(size,4); i++) {
         	BlogEntry blogentry = blogEntries.get(i);
-            pageContext.setAttribute("content", blogentry.getContent());
+        	pageContext.setAttribute("id", blogentry.getId());
+            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(100, blogentry.getContent().length())));
             pageContext.setAttribute("title", blogentry.getTitle());
             pageContext.setAttribute("user", blogentry.getUser());
             pageContext.setAttribute("date", blogentry.getDate());
@@ -102,6 +103,7 @@
                 <p>Content: ${fn:escapeXml(content)}</p>
                 <p>user: ${fn:escapeXml(user)}</p>
                 <p>date: ${fn:escapeXml(date)}</p>
+                <a href="/posts/${id}">View More</a>
 
             <%
         }
