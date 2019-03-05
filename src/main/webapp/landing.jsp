@@ -12,16 +12,20 @@
 
 <html>
   <head>
-  	<link type="text/css" rel="stylesheet" href="" />
+  	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
   </head>
   
   <body>
 
 
-	<h1>Landing Page</h1>
-	
-	<div>
-		Image Header Goes Here
+	<div class="ui segment">
+	  <img class="ui centered medium image" src="https://source.unsplash.com/6JMoAUG3lt4/800x600">
+		<h2 class="ui header center aligned">
+		  <div class="content">
+		    Web Blog
+		    <p>Description</p>
+		  </div>
+		</h2>
 	</div>
 
 	<%
@@ -31,7 +35,9 @@
     boolean subscribed = false;
     ObjectifyService.register(Subscriber.class);
     List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
-
+	%>
+		<div class="ui container">
+	<% 
     if (user != null) {
         for(Subscriber ss: subscribers) {
         	if(ss.getUserId().equals(user.getUserId())) {
@@ -41,77 +47,96 @@
       	pageContext.setAttribute("user", user);
 	%>
 	
-		<p>
-		    
-			Welcome, ${fn:escapeXml(user.nickname)}!(<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)
-			
-			<div>
-				<a href="/posts/new"> NEW POST</a>
-				
-				<%
-					if(subscribed){
-				%>
-					<a href="/unsubscribe"> Unsubscribe </a>	
-				<% 	
-					} else {
-				%>	
-					<a href="/subscribe"> Subscribe </a>
-				<%	
-				}
-				%>
-				
-			</div>
-			
-		</p>
 		
-	<%
-	    } else {
-	%>
-	
-		<p>
-			Please <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>!
-		</p>
-	
-	<%
-	 }
-	%>
-
-	<div>
-		Post Lists Goes Here
-	</div>
-	
-	<%
-	ObjectifyService.register(BlogEntry.class);
-	List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
-	Collections.sort(blogEntries, Collections.reverseOrder()); 
-	
-    if (blogEntries.isEmpty()) {
-        %>
-        <p>No Blog yet.</p>
-        <%
-    } else {
-    	int size = blogEntries.size();
-        for (int i=0; i<Math.min(size,4); i++) {
-        	BlogEntry blogentry = blogEntries.get(i);
-        	pageContext.setAttribute("id", blogentry.getId());
-            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(100, blogentry.getContent().length())));
-            pageContext.setAttribute("title", blogentry.getTitle());
-            pageContext.setAttribute("user", blogentry.getUser());
-            pageContext.setAttribute("date", blogentry.getDate());
+			
+			    
+				<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="ui purple basic button">SIGN OUT</a>
+				
+				
+					<a href="/posts/new" class="ui violet basic button"> NEW POST</a>
+					
+					<%
+						if(subscribed){
+					%>
+						<a href="/unsubscribe" class="ui pink basic button"> UNSUBSCRIBE </a>	
+					<% 	
+						} else {
+					%>	
+						<a href="/subscribe" class="ui pink basic button"> SUBSCRIBE </a>
+					<%	
+					}
+					%>
+					
+				
+				
+			
+			
+		<%
+		    } else {
 		%>
-                <p>Title: ${fn:escapeXml(title)}</p>
-                <p>Content: ${fn:escapeXml(content)}</p>
-                <p>user: ${fn:escapeXml(user)}</p>
-                <p>date: ${fn:escapeXml(date)}</p>
-                <a href="/posts/${id}">View More</a>
+		
+				
+				<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="ui purple basic button">SIGN IN</a>
+			
+		
+		<%
+		 }
+		%>
+			
+			
+			<a href="/posts" class="ui red basic button"> View All Posts</a>
 
-            <%
-        }
-    }
-%>
+		<%
+		ObjectifyService.register(BlogEntry.class);
+		List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
+		Collections.sort(blogEntries, Collections.reverseOrder()); 
+		
+	    if (blogEntries.isEmpty()) {
+	        %>
+	        <p>No Blog yet.</p>
+	        <%
+	    } else {
+	    	int size = blogEntries.size();
+	    	%>
+	    	<p>
+	    	<div class="ui cards grid">
+	    	<% 
+	        for (int i=0; i<Math.min(size,4); i++) {
+	        	BlogEntry blogentry = blogEntries.get(i);
+	        	pageContext.setAttribute("id", blogentry.getId());
+	            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(100, blogentry.getContent().length())));
+	            pageContext.setAttribute("title", blogentry.getTitle());
+	            pageContext.setAttribute("user", blogentry.getUser());
+	            pageContext.setAttribute("date", blogentry.getDate());
+			%>
+				<div class="ui card seven wide column">
+				    <div class="content">
+				      <div class="header">
+				        ${fn:escapeXml(title)}
+				      </div>
+				      <div class="meta">
+				        ${fn:escapeXml(user)}
+				      </div>
+				      <div class="description">
+				        ${fn:escapeXml(content)}
+				      </div>
+				    </div>
+				    <div class="extra content">
+				      ${fn:escapeXml(date)}
+						<div class="ui basic green button"><a href="/posts/${id}">View More</a></div>
+				    </div>
+				  </div>
+	            <%
+	        }
+	    	%>
+	    	</div>
+	    	</p>
+	    	<% 
+	    }
+	%>
+		</div>
 
-	<div>
-		<a href="/posts"> View All Posts</a>
-	</div>
+
+		
   </body>
 </html>
