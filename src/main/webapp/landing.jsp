@@ -20,16 +20,17 @@
 
 	<div class="ui segment">
 	<div class="ui medium images">
-	  <img src="https://source.unsplash.com/waZEHLRP98s/750x400">
-	  <img src="https://source.unsplash.com/Jztmx9yqjBw/750x400">
-	  <img src="https://source.unsplash.com/6hxvm0NzYP8/750x400">
+	  <img src="https://source.unsplash.com/waZEHLRP98s/700x300">
+	  <img src="https://source.unsplash.com/Jztmx9yqjBw/700x300">
+	  <img src="https://source.unsplash.com/6hxvm0NzYP8/700x300">
 	</div>
-		<h2 class="ui header center aligned">
+		<h1 class="ui header center aligned">
 		  <div class="content">
-			Web Blog
-		    <p style="font-size:18px;"> Users can login to post a new blog, view all blogs and view details of each blog. They can also subscribe and unsubscribe those blogs.</p>
+			WEB BLOG
 		  </div>
-		</h2>
+		   <p style="font-size:18px;"> </br> Users can login to post a new blog, view all blogs and view details </br> 
+		   of each blog. They can also subscribe and unsubscribe those blogs. </br> </br> </p>
+		</h1>
 	</div>
 
 	<%
