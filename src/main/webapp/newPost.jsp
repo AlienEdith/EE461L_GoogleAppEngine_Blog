@@ -35,7 +35,7 @@
 	    } else {
 	%>
 	
-	<h2 class="ui header center aligned">Create a New Post</h2>
+	<h2 class="ui grey header center aligned">Create a New Post</h2>
 
 	<div class="ui form" >
 		<form action="/posts" method="post">

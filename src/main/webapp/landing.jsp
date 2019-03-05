@@ -20,19 +20,19 @@
 	<div class="ui container">
 
 	<div class="ui segment">
-
-	  <img class="ui centered medium image" src="https://source.unsplash.com/Jztmx9yqjBw/1000x500">
-
-		<h1 class="ui header center aligned">
+	  <!-- https://source.unsplash.com/_ea1a8mZTcE/800x420 -->
+	  <img class="ui left floated medium image" src="https://source.unsplash.com/_ea1a8mZTcE/800x420">
+	  <h2 class="ui header">
 		  <div class="content">
-			WEB BLOG
+		    WEB BLOG
 		  </div>
-		   <p style="font-size:18px;"> </br> Users can login to post a new blog, view all blogs and view details </br> 
-		   of each blog. They can also subscribe and unsubscribe those blogs. </br> </br> </p>
-		</h1>
-	</div>
-	
-	<p>
+	  </h2>
+	  <h4 class="ui grey header">
+	  <div>Welcome to Web Blog Website! </div>
+	  <div>You could easily log in with your google account and then start post your own article.
+	  You could will all the blogs posted by other people even without login. We also recommend you subscribe to get a daily digest email of new posts everyday at 17:00!</div>
+	  </h4>
+	 </div>
 
 	<%
 	UserService userService = UserServiceFactory.getUserService();
@@ -59,16 +59,16 @@
 				<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="ui purple basic button">SIGN OUT</a>
 				
 				
-					<a href="/posts/new" class="ui violet basic button"> NEW POST</a>
+					<a href="/posts/new" class="ui pink basic button right floated"> NEW POST</a>
 					
 					<%
 						if(subscribed){
 					%>
-						<a href="/unsubscribe" class="ui pink basic button"> UNSUBSCRIBE </a>	
+						<a href="/unsubscribe" class="ui violet basic button" data-tooltip="Are you sure you want to unsubsribe T.T?" data-position="right center"> UNSUBSCRIBE </a>	
 					<% 	
 						} else {
 					%>	
-						<a href="/subscribe" class="ui pink basic button"> SUBSCRIBE </a>
+						<a href="/subscribe" class="ui violet basic button" data-tooltip="Good Choice!" data-position="right center"> SUBSCRIBE </a>
 					<%	
 					}
 					%>
@@ -90,7 +90,7 @@
 		%>
 			
 			
-			<a href="/posts" class="ui red basic button"> View All Posts</a>
+			<a href="/posts" class="ui red basic button right floated"> View All Posts</a>
 			</p>
 		<%
 		ObjectifyService.register(BlogEntry.class);
@@ -107,7 +107,7 @@
 	    	<p>
 	    	<div class="ui cards grid">
 	    	<% 
-	        for (int i=0; i<Math.min(size,4); i++) {
+	        for (int i=0; i<Math.min(size,3); i++) {
 	        	BlogEntry blogentry = blogEntries.get(i);
 	        	pageContext.setAttribute("id", blogentry.getId());
 	            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(300, blogentry.getContent().length())));
@@ -117,19 +117,19 @@
 			%>
 				<div class="ui card sixteen wide column">
 				    <div class="content">
-				      <div class="header">
+				      <div class="ui blue header">
 				        ${fn:escapeXml(title)}
 				      </div>
 				      <div class="meta">
 				        ${fn:escapeXml(user)}
 				      </div>
 				      <div class="description">
-				        ${fn:escapeXml(content)}
+				        ${fn:escapeXml(content)}...
 				      </div>
 				    </div>
 				    <div class="extra content">
 				      ${fn:escapeXml(date)}
-					  <a href="/posts/${id}" class="ui basic green button">View More</a>
+					  <a href="/posts/${id}" class="ui basic green button right floated" data-tooltip="View Full Content!" data-position="left center">View More</a>
 				    </div>
 				  </div>
 	            <%
