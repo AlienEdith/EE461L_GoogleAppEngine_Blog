@@ -13,10 +13,11 @@
 <html>
   <head>
   	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   
   <body>
-
+	<div class="ui container">
 
 	<div class="ui segment">
 	<div class="ui medium images">
@@ -32,6 +33,8 @@
 		   of each blog. They can also subscribe and unsubscribe those blogs. </br> </br> </p>
 		</h1>
 	</div>
+	
+	<p>
 
 	<%
 	UserService userService = UserServiceFactory.getUserService();
@@ -41,7 +44,7 @@
     ObjectifyService.register(Subscriber.class);
     List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
 	%>
-		<div class="ui container">
+	
 	<% 
     if (user != null) {
         for(Subscriber ss: subscribers) {
@@ -90,7 +93,7 @@
 			
 			
 			<a href="/posts" class="ui red basic button"> View All Posts</a>
-
+			</p>
 		<%
 		ObjectifyService.register(BlogEntry.class);
 		List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
@@ -128,7 +131,7 @@
 				    </div>
 				    <div class="extra content">
 				      ${fn:escapeXml(date)}
-						<div class="ui basic green button"><a href="/posts/${id}">View More</a></div>
+					  <a href="/posts/${id}" class="ui basic green button">View More</a>
 				    </div>
 				  </div>
 	            <%

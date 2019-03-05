@@ -37,7 +37,6 @@ public class UnactivateSubscribeServlet extends HttpServlet{
 
         ObjectifyService.register(Subscriber.class);
         List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();   
-        System.out.println(subscribers);
         for(Subscriber ss: subscribers) {
         	if(ss.getUserId().equals(user.getUserId())) {
         		ofy().delete().entity(ss).now();
