@@ -20,12 +20,9 @@
 	<div class="ui container">
 
 	<div class="ui segment">
-	<div class="ui medium images">
-	  <img src="https://source.unsplash.com/waZEHLRP98s/700x300">
-	  <img src="https://source.unsplash.com/Jztmx9yqjBw/700x300">
-	  <img src="https://source.unsplash.com/6hxvm0NzYP8/700x300">
-	  <img src="https://source.unsplash.com/i6Wc5qZO5MQ/700x300">
-	</div>
+
+	  <img class="ui centered medium image" src="https://source.unsplash.com/Jztmx9yqjBw/1000x500">
+
 		<h1 class="ui header center aligned">
 		  <div class="content">
 			WEB BLOG

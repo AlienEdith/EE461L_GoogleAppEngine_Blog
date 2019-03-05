@@ -35,22 +35,34 @@
 					pageContext.setAttribute("date", be.getDate());
 	%>
 					
-					<div class="ui clearing segment title-header">
-						<h2 class="ui header grey left aligned">
+					 <!--  <div class="ui clearing segment title-header"> -->
+						<h2 class="ui header blue left aligned">
 							${fn:escapeXml(title)}
 						</h2>
+						
+						<div class="ui segment">
+  							<div class="ui two column very relaxed grid">
+  							  <div class="column left aligned">
+     							 <p>Posted by ${fn:escapeXml(user)}</p>
+ 	   						  </div>
+    						  <div class="column rigit aligned">
+      							 <p>Posted at ${fn:escapeXml(date)}</p>
+    						  </div>
+ 						   </div>
+					</div>
+						
 						<h4 class="ui header grey right aligned">
 							Posted by ${fn:escapeXml(user)}
 						</h4>
-					</div>
+						<h4 class="ui header right aligned">
+							Posted at ${fn:escapeXml(date)}
+						</h4>
+					<!-- </div> -->
 
 					<div class="ui segment">
                 		<p style="font-size: 1.2rem">${content}</p>
-                		<h4 class="ui header right aligned">
-							Posted at ${fn:escapeXml(date)}
-						</h4>
                 	</div>
-                	<a href="/posts" class="ui black basic button">View All Posts</a>
+                	<a href="/posts" class="ui red basic button">View All Posts</a>
                 	
 					
 	<%
