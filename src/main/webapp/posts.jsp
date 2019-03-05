@@ -22,7 +22,7 @@
 
 		<h1 class="ui header center aligned">
 		  <div class="content">
-			List All Posts
+			Posts
 		  </div>
 		</h1>
 
@@ -46,31 +46,30 @@
     	<% 
         for (BlogEntry blogentry : blogEntries) {
         	pageContext.setAttribute("id", blogentry.getId());
-            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(100, blogentry.getContent().length())));
+            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(300, blogentry.getContent().length())));
             pageContext.setAttribute("title", blogentry.getTitle());
             pageContext.setAttribute("user", blogentry.getUser());
             pageContext.setAttribute("date", blogentry.getDate());
 		%>
 				
-<div class="ui items">
-  <div class="item">
-    <div class="content">
-      <a class="ui header blue">${fn:escapeXml(title)}</a>
-      <div class="meta">
-        <span> ${fn:escapeXml(user)}</span>
-      </div>
-      <div class="description">
-        <p>${fn:escapeXml(content)}</p>
-      </div>
-      <div class="extra">
-        ${fn:escapeXml(date)}
-      </div>
-      <br>
-       <div class="ui basic green button"><a href="/posts/${id}">View More</a></div>
-	   <div class="ui divider"></div>	
-    </div>
-  </div>
-  </div>
+		<div class="ui items">
+		  <div class="item">
+		    <div class="content">
+		      <h2 class="ui header blue">${fn:escapeXml(title)}</h2>
+		      <a href="/posts/${id}" class="ui basic green button right floated">View More</a>
+		      <div class="meta">
+		        <span> ${fn:escapeXml(user)}</span>
+		      </div>
+		      <div class="description">
+		        <p>${fn:escapeXml(content)}...</p>
+		      </div>
+		      <div class="extra">
+		        <span>${fn:escapeXml(date)}</span>
+		      </div>
+			   <div class="ui divider"></div>	
+		    </div>
+		  </div>
+		  </div>
 
          <%
         }
