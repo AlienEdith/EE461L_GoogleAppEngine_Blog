@@ -44,7 +44,7 @@ public class SubscribeCronServlet extends HttpServlet{
 		calendar.set(Calendar.SECOND,0);
 		Date dateBefore = calendar.getTime();
 
-		// Get latest Blog		
+		// Get latest Blogs		
 		ObjectifyService.register(BlogEntry.class);
 		List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
 		Collections.sort(blogEntries, Collections.reverseOrder()); 

@@ -16,10 +16,7 @@
   
   <body>
 	<%
-	
-	ObjectifyService.register(BlogEntry.class);
-	String BlogCollection = "BlogCollection";
-	
+
 	UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
 

@@ -19,10 +19,11 @@
   <body>
 	<% 
 		boolean found = false;
-		if(request.getRequestURI().split("/").length > 2){
+		if(request.getRequestURI().split("/").length == 3){
 			String currentId = request.getRequestURI().split("/")[2];
 			ObjectifyService.register(BlogEntry.class);
 			List<BlogEntry> blogEntries = ObjectifyService.ofy().load().type(BlogEntry.class).list();   
+			
 			for(BlogEntry be: blogEntries) {
 				if(be.getId().toString().equals(currentId)) {
 					found = true;
