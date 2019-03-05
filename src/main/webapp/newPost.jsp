@@ -11,10 +11,14 @@
 
 <html>
   <head>
-  	<link type="text/css" rel="stylesheet" href="" />
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  	<title>Create A New Post</title>
   </head>
   
   <body>
+  	<div class="ui container">
+  	<div class="main-area">
 	<%
 
 	UserService userService = UserServiceFactory.getUserService();
@@ -31,23 +35,34 @@
 	    } else {
 	%>
 	
-		<h1>Create a New Post</h1>
+	<h2 class="ui header center aligned">Create a New Post</h2>
 
-	<form action="/posts" method="post">
-		<div><input type="text" name="title"/></div>
-   		<div><textarea name="content" rows="3" cols="60"></textarea></div>
-   		<input type="hidden" name="blogCollection" value="blogCollection"/>
-   		<div><input type="submit" value="Post Blog" ></div>
- 	</form>
-	<a href="/">Cancel</a>
+	<div class="ui form" >
+		<form action="/posts" method="post">
+			<div class="field">
+				<label>Title</label>
+				<input type="text" name="title" required/>
+			</div>
+	   		<div class="field">
+	   			<label>Content</label>
+	   			<textarea name="content" rows="10" cols="60" required></textarea>
+	   		</div>
+	   		<input type="hidden" name="blogCollection" value="blogCollection"/>
+	   		<div>
+	   			<input type="submit" value="Post" class="ui green basic button">
+	   			<a href="/" class="ui red basic button">Cancel</a>	
+	   		</div>
+	 	</form>
+ 	</div>
+	
 	<%
 	 }
 	%>
 	
 
-	   
-
-
+	   	
+		</div>
+	</div>
 
   </body>
 

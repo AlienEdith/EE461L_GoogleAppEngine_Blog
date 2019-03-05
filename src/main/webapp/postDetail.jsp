@@ -13,10 +13,12 @@
 
 <html>
   <head>
-  	<link type="text/css" rel="stylesheet" href="" />
+  	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   
   <body>
+  	<div class="ui container">
 	<% 
 		boolean found = false;
 		if(request.getRequestURI().split("/").length == 3){
@@ -32,10 +34,25 @@
 					pageContext.setAttribute("user", be.getUser());
 					pageContext.setAttribute("date", be.getDate());
 	%>
-					<p>Title: ${fn:escapeXml(title)}</p>
-                	<p>Content: ${fn:escapeXml(content)}</p>
-                	<p>user: ${fn:escapeXml(user)}</p>
-                	<p>date: ${fn:escapeXml(date)}</p>
+					
+					<div class="ui clearing segment title-header">
+						<h2 class="ui header grey left aligned">
+							${fn:escapeXml(title)}
+						</h2>
+						<h4 class="ui header grey right aligned">
+							Posted by ${fn:escapeXml(user)}
+						</h4>
+					</div>
+
+					<div class="ui segment">
+                		<p style="font-size: 1.2rem">${content}</p>
+                		<h4 class="ui header right aligned">
+							Posted at ${fn:escapeXml(date)}
+						</h4>
+                	</div>
+                	<a href="/posts" class="ui black basic button">View All Posts</a>
+                	
+					
 	<%
 				}
 			}
@@ -46,13 +63,14 @@
 	<% 		
 		}
 	 %>
+	 			
 
 
 
 
 
-	<div>
-		<a href="/posts"> Go Back</a>
+
+		
 	</div>
 
   </body>
