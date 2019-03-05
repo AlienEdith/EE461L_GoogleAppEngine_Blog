@@ -112,12 +112,12 @@
 	        for (int i=0; i<Math.min(size,4); i++) {
 	        	BlogEntry blogentry = blogEntries.get(i);
 	        	pageContext.setAttribute("id", blogentry.getId());
-	            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(100, blogentry.getContent().length())));
+	            pageContext.setAttribute("content", blogentry.getContent().substring(0, Math.min(300, blogentry.getContent().length())));
 	            pageContext.setAttribute("title", blogentry.getTitle());
 	            pageContext.setAttribute("user", blogentry.getUser());
 	            pageContext.setAttribute("date", blogentry.getDate());
 			%>
-				<div class="ui card seven wide column">
+				<div class="ui card sixteen wide column">
 				    <div class="content">
 				      <div class="header">
 				        ${fn:escapeXml(title)}
