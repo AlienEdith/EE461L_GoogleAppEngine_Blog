@@ -19,11 +19,15 @@
 
 
 	<div class="ui segment">
-	  <img class="ui centered medium image" src="https://source.unsplash.com/6JMoAUG3lt4/800x600">
+	<div class="ui medium images">
+	  <img src="https://source.unsplash.com/waZEHLRP98s/750x400">
+	  <img src="https://source.unsplash.com/Jztmx9yqjBw/750x400">
+	  <img src="https://source.unsplash.com/6hxvm0NzYP8/750x400">
+	</div>
 		<h2 class="ui header center aligned">
 		  <div class="content">
-		    Web Blog
-		    <p>Description</p>
+			Web Blog
+		    <p style="font-size:18px;"> Users can login to post a new blog, view all blogs and view details of each blog. They can also subscribe and unsubscribe those blogs.</p>
 		  </div>
 		</h2>
 	</div>
