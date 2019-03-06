@@ -14,6 +14,7 @@
   <head>
   	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
   	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  	<title>Web Blog</title>
   </head>
   
   <body>
